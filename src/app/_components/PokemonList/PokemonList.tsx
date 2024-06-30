@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import PokemonCard from "../PokemonCard/PokemonCard";
 
 interface pokemon {
   name: string;
@@ -55,9 +56,16 @@ export default function PokemonList({ pokemonListOfType }: pokemonListProps) {
       {pokemonListOfTypeSliced.map((pokemonInfo, i) => (
         <li key={pokemonInfo.pokemon.url} className="">
           {i === listLength - 1 ? (
-            <h2 ref={lastItemRef}>{pokemonInfo.pokemon.name} (Last Pokemon)</h2>
+            <PokemonCard
+              ref={lastItemRef}
+              pokemonURL={pokemonInfo.pokemon.url}
+              pokemonName={pokemonInfo.pokemon.name}
+            />
           ) : (
-            <h2>{pokemonInfo.pokemon.name}</h2>
+            <PokemonCard
+              pokemonURL={pokemonInfo.pokemon.url}
+              pokemonName={pokemonInfo.pokemon.name}
+            />
           )}
         </li>
       ))}

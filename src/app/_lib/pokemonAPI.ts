@@ -8,8 +8,8 @@ export async function getAllPokemonFromSlice(limit: string, offset: string) {
 }
 
 // getPokemon -> get the information of a pokemon
-export async function getPokemon(name: string) {
-    const response = await fetch(POKEMON_API + "pokemon/" + name);
+export async function getPokemon(url: string) {
+    const response = await fetch(url);
     const data = await response.json();
     return data;
 }

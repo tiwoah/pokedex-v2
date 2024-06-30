@@ -1,6 +1,7 @@
 "use client";
 import { getAllPokemonFromSlice } from "@/app/_lib/pokemonAPI";
 import React, { useEffect, useRef, useState } from "react";
+import PokemonCard from "../PokemonCard/PokemonCard";
 
 interface pokemon {
   name: string;
@@ -81,16 +82,23 @@ export default function AllPokemonList({
       // See last item
       lastItemRef.current.style.backgroundColor = "#899";
     }
-  }, [lastItemRef.current]);
+  }, [pokemonList]);
 
   return (
     <>
       {pokemonList.map((pokemonInfo: pokemon, i: number) => (
         <li key={pokemonInfo.url} className="">
           {i === pokemonList.length - 1 ? (
-            <h2 ref={lastItemRef}>{pokemonInfo.name} (Last Pokemon)</h2>
+            <PokemonCard
+              ref={lastItemRef}
+              pokemonURL={pokemonInfo.url}
+              pokemonName={pokemonInfo.name}
+            />
           ) : (
-            <h2>{pokemonInfo.name}</h2>
+            <PokemonCard
+              pokemonURL={pokemonInfo.url}
+              pokemonName={pokemonInfo.name}
+            />
           )}
         </li>
       ))}
