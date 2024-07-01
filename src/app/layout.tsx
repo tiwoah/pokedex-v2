@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./_components/ThemeProvider";
 import ThemeSwitcher from "./_components/ThemeSwitcher";
 import Navigation from "./_components/Navigation/Navigation";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,26 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider defaultTheme="system" attribute="class">
-          <ThemeSwitcher />
-          <Navigation />
-          {children}
+          {/* <div className="z-[999] fixed top-0 left-0 w-screen h-[6px] bg-purple-500 sm:bg-red-500 md:bg-blue-400 lg:bg-yellow-200 xl:bg-amber-700 2xl:bg-green-500"></div> */}
+          <header className="py-6 flex flex-col items-center gap-4 md:flex-row justify-between md:px-8">
+            {/* <h1 className="text-center py-12 md:py-24">Pokedex</h1> */}
+            <div className="relative mx-auto md:mx-0 w-fit h-14 md:h-24">
+              <Image
+                src={"/logo.png"}
+                width={387}
+                height={140}
+                alt="Pokemon Logo"
+                style={{ width: "auto", height: "100%" }}
+              />
+            </div>
+            <div>
+              <ThemeSwitcher />
+            </div>
+          </header>
+          <div className="md:flex">
+            <Navigation />
+            <main className="grow p-4 md:py-0 xl:py-8 md:pr-8">{children}</main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

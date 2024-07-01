@@ -17,7 +17,7 @@ interface pokemonListProps {
 
 export default function PokemonList({ pokemonListOfType }: pokemonListProps) {
   const maxLimit = pokemonListOfType.length;
-  const [listLength, setListLength] = useState(30);
+  const [listLength, setListLength] = useState(15);
   const pokemonListOfTypeSliced = pokemonListOfType.slice(0, listLength);
   const [loading, setLoading] = useState(false);
   const isFetching = useRef(false);
@@ -36,20 +36,22 @@ export default function PokemonList({ pokemonListOfType }: pokemonListProps) {
   return (
     <>
       {pokemonListOfTypeSliced.map((pokemonInfo, i) => (
-        <li key={pokemonInfo.pokemon.url} className="">
+        <div key={pokemonInfo.pokemon.url} className="">
           {i === listLength - 1 ? (
             <PokemonCard
               ref={lastItemRef}
+              index={i}
               pokemonURL={pokemonInfo.pokemon.url}
               pokemonName={pokemonInfo.pokemon.name}
             />
           ) : (
             <PokemonCard
+              index={i}
               pokemonURL={pokemonInfo.pokemon.url}
               pokemonName={pokemonInfo.pokemon.name}
             />
           )}
-        </li>
+        </div>
       ))}
     </>
   );

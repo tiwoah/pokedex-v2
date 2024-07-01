@@ -37,12 +37,12 @@ export default async function PokemonTypePage({
       );
 
       return (
-        <>
-          <h1>{pokemonType}</h1>
-          <ul>
+        <section>
+          <h1 className="capitalize">{pokemonType} Type Pokemon</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 xl:gap-3 pt-6">
             <PokemonList pokemonListOfType={pokemonListOfType} />
-          </ul>
-        </>
+          </div>
+        </section>
       );
     }
   } catch {

@@ -3,15 +3,15 @@ import { getAllPokemonFromSlice } from "./_lib/pokemonAPI";
 
 export default async function Home() {
   try {
-    const initialPokemonList = await getAllPokemonFromSlice("40", "0");
+    const initialPokemonList = await getAllPokemonFromSlice("20", "0");
 
     return (
-      <>
+      <section>
         <h1>All Pokemon</h1>
-        <ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 xl:gap-3 pt-6">
           <AllPokemonList initialPokemonList={initialPokemonList} />
-        </ul>
-      </>
+        </div>
+      </section>
     );
   } catch {
     return (

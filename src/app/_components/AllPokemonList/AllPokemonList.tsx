@@ -16,8 +16,8 @@ interface initialPokemonListProps {
 export default function AllPokemonList({
   initialPokemonList,
 }: initialPokemonListProps) {
-  const itemsPerFetch = 5;
-  const [offset, setOffset] = useState(40);
+  const itemsPerFetch = 15;
+  const [offset, setOffset] = useState(20);
   const [pokemonList, setPokemonList] = useState<pokemon[]>(initialPokemonList);
   const [loading, setLoading] = useState(false);
   const isFetching = useRef(false);
@@ -61,20 +61,22 @@ export default function AllPokemonList({
   return (
     <>
       {pokemonList.map((pokemonInfo: pokemon, i: number) => (
-        <li key={pokemonInfo.url} className="">
+        <div key={pokemonInfo.url} className="">
           {i === pokemonList.length - 1 ? (
             <PokemonCard
               ref={lastItemRef}
+              index={i}
               pokemonURL={pokemonInfo.url}
               pokemonName={pokemonInfo.name}
             />
           ) : (
             <PokemonCard
+              index={i}
               pokemonURL={pokemonInfo.url}
               pokemonName={pokemonInfo.name}
             />
           )}
-        </li>
+        </div>
       ))}
     </>
   );
