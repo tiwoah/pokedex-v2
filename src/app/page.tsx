@@ -8,7 +8,7 @@ export default async function Home() {
     return (
       <section>
         <h1>All Pokemon</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 xl:gap-3 pt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 2xl:gap-3 pt-6">
           <AllPokemonList initialPokemonList={initialPokemonList} />
         </div>
       </section>

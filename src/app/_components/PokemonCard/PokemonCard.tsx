@@ -84,16 +84,16 @@ const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(
     return (
       <div
         ref={ref}
-        className={`relative p-7 rounded-3xl text-white hover:scale-[1.02] hover:z-30 hover:drop-shadow-3xl dark:hover:drop-light-3xl transition-all duration-300 aspect-[15/8] lg:aspect-[15/7] ${
+        className={`relative p-5 sm:p-7 rounded-3xl text-black transition-all duration-300 aspect-[15/8] 2xl:aspect-[15/7] ${
           pokemonColorVariants.card[primaryType as CardKey]
         } ${
           loading || contentLoading
             ? "blur-md bg-gray-200 dark:bg-gray-800 animate-pulse"
-            : ""
+            : "sm:hover:scale-[1.02] sm:hover:z-30 sm:hover:drop-shadow-3xl sm:dark:hover:drop-light-3xl"
         }`}
       >
         <div className="absolute inset-0 overflow-hidden w-full h-full rounded-3xl">
-          <div className="absolute bottom-0 left-0 dots w-full h-20"></div>
+          <div className="absolute bottom-0 left-0 dots-sm lg:dots w-full h-[30%]"></div>
 
           <div className="absolute -right-[25%] -bottom-[15%] w-[70%] aspect-square opacity-5 pointer-events-none">
             <Image
@@ -122,19 +122,19 @@ const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(
         </div>
 
         <div className="relative z-10">
-          <h3 className="opacity-80">
+          <p className="opacity-80 text-base font-normal sm:text-base sm:leading-4 md:text-base md:leading-4">
             {loading
               ? "#???"
               : "#" + pokemonData.id?.toString().padStart(3, "0")}
-          </h3>
+          </p>
           <h2 className="uppercase w-7/12">{pokemonName.replace(/-/g, " ")}</h2>
           {!loading && (
-            <div className="flex mt-1 sm:mt-1 xl:mt-2 gap-1">
+            <div className="flex mt-2 gap-1">
               {pokemonData.types &&
                 pokemonData.types.map((info: pokemonDataTypes) => (
                   <div
                     key={info.slot}
-                    className={` rounded-xl text-white p-1 px-2 capitalize text-xs md:text-sm xl:text-base ${
+                    className={`rounded-xl p-1 px-2 capitalize text-xs md:text-sm xl:text-xs 2xl:text-sm ${
                       pokemonColorVariants.tag[info.type.name as TagKey]
                     }`}
                   >

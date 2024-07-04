@@ -6,7 +6,7 @@ export default async function Navigation() {
   const pokemonTypes = await getPokemonTypes();
 
   return (
-    <nav className="py-0 md:sticky top-0 self-start p-4 xl:p-8 pr-8 xl:pr-14">
+    <nav className="hsm:sticky top-0 self-start p-4 xl:p-6 pr-6 xl:pr-8">
       <NavigationList pokemonTypes={pokemonTypes}></NavigationList>
     </nav>
   );

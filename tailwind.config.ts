@@ -12,7 +12,7 @@ const config: Config = {
       colors: {
         custom: {
           'soft-black': "#181A18",
-          'all': '#303030',
+          'all': 'hsl(22, 0%, 45%)',
           'normal': 'hsl(55, 25%, 65%)',
           'fire': 'hsl(17, 88%, 64%)',
           'water': 'hsl(219, 75%, 61%)',
@@ -52,6 +52,11 @@ const config: Config = {
           'tag-fairy': 'hsl(331, 55%, 78%)',
         },
       },
+      screens: {
+        'hsm': { 'raw': '(min-height: 620px) and (min-width: 768px)' },
+        'hmd': { 'raw': '(min-height: 880px)' },
+        'hxl': { 'raw': '(min-height: 1050px)' },
+      }
     },
   },
   plugins: [],

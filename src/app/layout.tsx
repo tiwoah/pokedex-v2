@@ -40,7 +40,9 @@ export default function RootLayout({
           </header>
           <div className="md:flex">
             <Navigation />
-            <main className="grow p-4 md:py-0 xl:py-8 md:pr-8">{children}</main>
+            <main className="grow p-4 md:py-0 xl:p-6 xl:pr-6 overflow-x-hidden">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>
