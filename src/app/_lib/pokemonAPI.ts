@@ -27,3 +27,17 @@ export async function getPokemonFromTypeURL(url: string) {
     const data = await response.json();
     return data.pokemon;
 }
+
+// getPokemonSpecies -> get the attributes of a pokemon species that are shared across all varieties of a pokemon
+export async function getPokemonSpecies(id: string) {
+    const response = await fetch(POKEMON_API + "pokemon-species/" + id);
+    const data = await response.json();
+    return data;
+}
+
+// getPokemonEvolutionChain -> get the attributes of a pokemon species that are shared across all varieties of a pokemon
+export async function getPokemonEvolutionChain(url: string) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.chain;
+}

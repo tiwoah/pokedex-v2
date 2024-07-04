@@ -3,6 +3,7 @@ import { pokemonColorVariants } from "@/app/_lib/colorVariants";
 import { getPokemon } from "@/app/_lib/pokemonAPI";
 import React, { forwardRef, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface PokemonCardProps {
   index: number;
@@ -82,71 +83,75 @@ const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(
       pokemonData.sprites?.front_default;
 
     return (
-      <div
-        ref={ref}
-        className={`relative p-5 sm:p-7 rounded-3xl text-black transition-all duration-300 aspect-[15/8] 2xl:aspect-[15/7] ${
-          pokemonColorVariants.card[primaryType as CardKey]
-        } ${
-          loading || contentLoading
-            ? "blur-md bg-gray-200 dark:bg-gray-800 animate-pulse"
-            : "sm:hover:scale-[1.02] sm:hover:z-30 sm:hover:drop-shadow-3xl sm:dark:hover:drop-light-3xl"
-        }`}
+      <Link
+        href={"/pokemon/" + pokemonName}
+        className="relative w-full h-full max-w-full max-h-full flex rounded-3xl aspect-[15/8] 2xl:aspect-[15/7]"
       >
-        <div className="absolute inset-0 overflow-hidden w-full h-full rounded-3xl">
-          <div className="absolute bottom-0 left-0 dots-sm lg:dots w-full h-[30%]"></div>
-
-          <div className="absolute -right-[25%] -bottom-[15%] w-[70%] aspect-square opacity-5 pointer-events-none">
-            <Image
-              src="/pokeball.png"
-              fill
-              alt="type icon"
-              sizes="400px"
-              priority={index < 3}
-            />
+        <div
+          ref={ref}
+          className={`relative grow p-5 sm:p-7 rounded-3xl text-black transition-all duration-300 ${
+            pokemonColorVariants.card[primaryType as CardKey]
+          } ${
+            loading || contentLoading
+              ? "blur-md bg-gray-200 dark:bg-gray-800 animate-pulse"
+              : "sm:hover:scale-[1.02] sm:hover:z-30 sm:hover:drop-shadow-3xl sm:dark:hover:drop-light-3xl"
+          }`}
+        >
+          <div className="absolute inset-0 overflow-hidden w-full h-full rounded-3xl pointer-events-none">
+            <div className="absolute bottom-0 left-0 dots-sm lg:dots w-full h-[30%]"></div>
+            <div className="absolute -right-[25%] -bottom-[15%] w-[70%] aspect-square opacity-5">
+              <Image
+                src="/pokeball.png"
+                fill
+                alt="type icon"
+                sizes="400px"
+                priority={index < 3}
+              />
+            </div>
+          </div>
+          <div className="absolute -right-[5%] -bottom-[0%] h-[110%] aspect-square pointer-events-none">
+            {!loading && imageUrl && (
+              <Image
+                src={imageUrl}
+                onLoad={() => {
+                  setContentLoading(false);
+                }}
+                fill
+                alt={`Pokemon sprite: ` + pokemonName}
+                sizes="400px"
+                priority={index < 3}
+              />
+            )}
+          </div>
+          <div className="relative z-10 w-fit max-w-[58%]">
+            <p className="opacity-80 text-base font-normal sm:text-base sm:leading-4 md:text-base md:leading-4">
+              {loading
+                ? "#???"
+                : "#" + pokemonData.id?.toString().padStart(3, "0")}
+            </p>
+            <h2 className="uppercase">{pokemonName.replace(/-/g, " ")}</h2>
+            {!loading && (
+              <div className="flex mt-2 gap-1">
+                {pokemonData.types &&
+                  pokemonData.types.map((info: pokemonDataTypes) => (
+                    <div
+                      key={info.slot}
+                      className={`rounded-xl p-1 px-2 capitalize text-xs md:text-sm xl:text-xs 2xl:text-sm ${
+                        pokemonColorVariants.tag[info.type.name as TagKey]
+                      }`}
+                    >
+                      {info.type.name}
+                    </div>
+                  ))}
+              </div>
+            )}
           </div>
         </div>
-
-        <div className="absolute -right-[5%] -bottom-[0%] h-[110%] aspect-square pointer-events-none">
-          {!loading && imageUrl && (
-            <Image
-              src={imageUrl}
-              onLoad={() => {
-                setContentLoading(false);
-              }}
-              fill
-              alt={`Pokemon sprite: ` + pokemonName}
-              sizes="400px"
-              priority={index < 3}
-            />
-          )}
-        </div>
-
-        <div className="relative z-10">
-          <p className="opacity-80 text-base font-normal sm:text-base sm:leading-4 md:text-base md:leading-4">
-            {loading
-              ? "#???"
-              : "#" + pokemonData.id?.toString().padStart(3, "0")}
-          </p>
-          <h2 className="uppercase w-7/12">{pokemonName.replace(/-/g, " ")}</h2>
-          {!loading && (
-            <div className="flex mt-2 gap-1">
-              {pokemonData.types &&
-                pokemonData.types.map((info: pokemonDataTypes) => (
-                  <div
-                    key={info.slot}
-                    className={`rounded-xl p-1 px-2 capitalize text-xs md:text-sm xl:text-xs 2xl:text-sm ${
-                      pokemonColorVariants.tag[info.type.name as TagKey]
-                    }`}
-                  >
-                    {info.type.name}
-                  </div>
-                ))}
-            </div>
-          )}
-        </div>
-      </div>
+      </Link>
     );
   }
 );
+
+PokemonCard.displayName = "PokemonCard";
 
 export default PokemonCard;

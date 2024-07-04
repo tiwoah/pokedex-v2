@@ -29,9 +29,6 @@ export function useInfiniteScroll(fetchItems: () => void, loading: boolean, isFe
     
           // Save observer reference for cleanup
           observerRef.current = observer;
-    
-          // See last item
-          lastItemRef.current.style.backgroundColor = "#899";
         }
       }, [dependency]);
 
