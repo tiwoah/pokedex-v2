@@ -5,6 +5,7 @@ import { ThemeProvider } from "./_components/ThemeProvider";
 import ThemeSwitcher from "./_components/ThemeSwitcher";
 import Navigation from "./_components/Navigation/Navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,20 @@ export default function RootLayout({
                 style={{ width: "auto", height: "100%" }}
               />
             </div>
-            <div>
+            <div className="flex gap-6">
+              <Link
+                href="/favorites"
+                className="p-2 px-4 subtitle-p bg-yellow-400 text-black rounded-full flex justify-center items-center gap-2 outline outline-black/0 outline-2 hover:outline-black/100 transition-all duration-200"
+              >
+                <Image
+                  src="/icons/star_filled.png"
+                  width={20}
+                  height={20}
+                  alt="yuh"
+                  className=""
+                />
+                My Favorites
+              </Link>
               <ThemeSwitcher />
             </div>
           </header>

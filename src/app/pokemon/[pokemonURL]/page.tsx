@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import StatsBar from "@/app/_components/PokemonPage/StatsBar";
 import PokemonImage from "@/app/_components/PokemonPage/PokemonImage";
+import ToggleFavorite from "@/app/_components/ToggleFavorite";
 
 type CardKey = keyof typeof pokemonColorVariants.card;
 type TagKey = keyof typeof pokemonColorVariants.tag;
@@ -43,11 +44,23 @@ export default async function SpecificPokemonPage({
 
     return (
       <article
-        className={`h-full p-6 md:p-10 rounded-3xl text-black ${
+        className={`relative h-full p-6 md:p-10 rounded-3xl text-black ${
           pokemonColorVariants.card[primaryType as CardKey]
         }`}
       >
-        <PreviousPage />
+        <div className="flex justify-between">
+          <PreviousPage />
+
+          {data.id && (
+            <div className="flex">
+              <ToggleFavorite
+                id={data.id.toString()}
+                name={data.name}
+                url={"https://pokeapi.co/api/v2/pokemon/" + pokemonURL}
+              />
+            </div>
+          )}
+        </div>
 
         <div className="mt-8 grid grid-rows-1 md:grid-cols-2 lg:grid-cols-3">
           <div className="order-last md:order-first py-4 md:py-0">
@@ -140,7 +153,7 @@ export default async function SpecificPokemonPage({
             </div>
           </div>
 
-          <div className="justify-self-center md:justify-self-end w-fit h-fit pl-4">
+          <div className="justify-self-center md:justify-self-end w-fit h-fit md:pl-4">
             <div className="md:hidden">
               <p className="opacity-80 text-lg font-normal sm:text-lg sm:leading-4 md:text-xl md:leading-4">
                 #{data.id.toString().padStart(3, "0")}

@@ -4,6 +4,12 @@ import { getPokemon } from "@/app/_lib/pokemonAPI";
 import React, { forwardRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  addFavorite,
+  checkIsFavorited,
+  removeFavorite,
+} from "@/app/_lib/handleFavorites";
+import ToggleFavorite from "../ToggleFavorite";
 
 interface PokemonCardProps {
   index: number;
@@ -146,6 +152,16 @@ const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(
               </div>
             )}
           </div>
+
+          {pokemonData.id && (
+            <div className="absolute left-4 sm:left-6 bottom-4 sm:bottom-6 flex">
+              <ToggleFavorite
+                id={pokemonData.id.toString()}
+                name={pokemonName}
+                url={pokemonURL}
+              />
+            </div>
+          )}
         </div>
       </Link>
     );
