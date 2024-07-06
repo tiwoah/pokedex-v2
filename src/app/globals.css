@@ -54,4 +54,16 @@ body {
   .subtitle-p {
     @apply text-sm xl:text-base xl:leading-5
   }
+
+  .bg-dark {
+    background-image: url("https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8621.jpg?t=st=1720226810~exp=1720230410~hmac=9b2faf86c554caf9859e9ebbfc94bd00986f6474ffaafc8f089a59d78b85fce6&w=1380");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .bg-light {
+    background-image: url("https://img.freepik.com/free-photo/vivid-blurred-colorful-wallpaper-background_58702-3798.jpg?t=st=1720224817~exp=1720228417~hmac=5dfa820c4b0525e05c49a3f66cdb3dc7974af2299482f55bfcfde12e19347c58&w=1380");
+    background-size: cover;
+    background-attachment: fixed;
+  }
 }

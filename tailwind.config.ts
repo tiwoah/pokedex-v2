@@ -56,7 +56,10 @@ const config: Config = {
         'hsm': { 'raw': '(min-height: 620px) and (min-width: 768px)' },
         'hmd': { 'raw': '(min-height: 880px)' },
         'hxl': { 'raw': '(min-height: 1050px)' },
-      }
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+      },
     },
   },
   plugins: [],
