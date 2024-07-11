@@ -61,7 +61,7 @@ const PokemonTypeButton: React.FC<PokemonTypeButtonProps> = ({
     >
       <Link
         href={name === "all" ? "/" : `/${name}`}
-        className={`p-1 px-4 hmd:p-2 hmd:px-4 text-xs hmd:text-sm hxl:text-base min-w-32 rounded-full uppercase font-black text-black text-center flex items-center justify-between w-fit xl:min-w-40 transition-all duration-200 outline outline-2  ${
+        className={`p-1 px-4 hmd:p-2 hmd:px-4 text-xs hmd:text-sm hxl:text-base min-w-32 rounded-full uppercase font-black text-black text-center flex items-center justify-between w-fit xl:min-w-40 transition-all duration-200 ease-in-out outline outline-0  ${
           pokemonColorVariants.card[name as CardKey]
         } ${
           isActive

@@ -95,7 +95,7 @@ const PokemonCard = forwardRef<HTMLDivElement, PokemonCardProps>(
       >
         <div
           ref={ref}
-          className={`relative grow p-5 sm:p-7 rounded-3xl text-black transition-all duration-300 ${
+          className={`relative grow p-5 sm:p-7 rounded-3xl text-black transition-all duration-200 ${
             pokemonColorVariants.card[primaryType as CardKey]
           } ${
             loading || contentLoading

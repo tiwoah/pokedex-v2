@@ -33,7 +33,10 @@ export default function ToggleFavorite({ id, name, url }: ToggleFavoriteProps) {
   };
 
   return (
-    <button onClick={handleAddFavorite}>
+    <button
+      onClick={handleAddFavorite}
+      className="sm:hover:scale-110 transition-all duration-200"
+    >
       {isFavorited ? (
         <Image src="/icons/star_filled.png" width={30} height={30} alt="yuh" />
       ) : (

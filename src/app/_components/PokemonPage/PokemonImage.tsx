@@ -29,16 +29,20 @@ export default function PokemonImage({
       </div>
       <div className="w-full flex gap-2 justify-center py-2 drop-shadow-xl">
         <button
-          className={`p-2 px-4 subtitle-p bg-black/10 rounded-full outline outline-2 transition-all duration-200 ${
-            displayImage === "normal" ? "outline-black/100" : "outline-black/0"
+          className={`p-2 px-4 subtitle-p rounded-full outline outline-2 transition-all duration-200 ${
+            displayImage === "normal"
+              ? "outline-black/100 bg-white/10"
+              : "outline-black/0 bg-black/10"
           }`}
           onClick={() => setDisplayImage("normal")}
         >
           Default
         </button>
         <button
-          className={`p-2 px-4 subtitle-p bg-black/10 rounded-full outline outline-2 transition-all duration-200 ${
-            displayImage === "shiny" ? "outline-black/100" : "outline-black/0"
+          className={`p-2 px-4 subtitle-p rounded-full outline outline-2 transition-all duration-200 ${
+            displayImage === "shiny"
+              ? "outline-black/100 bg-white/10"
+              : "outline-black/0 bg-black/10"
           }`}
           onClick={() => setDisplayImage("shiny")}
         >

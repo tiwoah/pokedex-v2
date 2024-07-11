@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./_components/ThemeProvider";
 import ThemeSwitcher from "./_components/ThemeSwitcher";
@@ -7,7 +7,7 @@ import Navigation from "./_components/Navigation/Navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter_Tight({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Pokédex",
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans bg-light dark:bg-dark`}>
         <ThemeProvider defaultTheme="system" attribute="class">
           {/* <div className="z-[999] fixed top-0 left-0 w-screen h-[6px] bg-purple-500 sm:bg-red-500 md:bg-blue-400 lg:bg-yellow-200 xl:bg-amber-700 2xl:bg-green-500"></div> */}
-          <header className="py-6 flex flex-col items-center gap-4 md:flex-row justify-between md:px-8 xl:px-12">
+          <header className="relative py-6 flex flex-col items-center gap-4 md:flex-row justify-between md:px-8 xl:px-12 z-20">
             {/* <h1 className="text-center py-12 md:py-24">Pokedex</h1> */}
             <div className="relative mx-auto md:mx-0 w-fit h-14 md:h-24">
               <Image
@@ -37,23 +37,23 @@ export default function RootLayout({
               />
             </div>
             <div className="flex gap-6">
+              <ThemeSwitcher />
               <Link
                 href="/favorites"
-                className="p-2 px-4 subtitle-p bg-yellow-400 text-black rounded-full flex justify-center items-center gap-2 outline outline-black/0 dark:outline-white/0 outline-2 hover:outline-black/100 dark:hover:outline-white/100 transition-all duration-200"
+                className="p-2 px-3 subtitle-p bg-yellow-400 text-black rounded-full flex justify-center items-center gap-2 outline outline-black/0 dark:outline-white/0 outline-0 hover:outline-black/100 dark:hover:outline-white/100 transition-all duration-200"
               >
                 <Image
                   src="/icons/star_filled.png"
                   width={20}
                   height={20}
-                  alt="yuh"
+                  alt="Favorite Star"
                   className=""
                 />
                 My Favorites
               </Link>
-              <ThemeSwitcher />
             </div>
           </header>
-          <div className="md:flex xl:px-6">
+          <div className="relative md:flex xl:px-6 z-20">
             <Navigation />
             <main className="grow p-4 md:py-0 xl:p-6 xl:pr-6 overflow-x-hidden">
               {children}

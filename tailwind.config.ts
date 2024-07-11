@@ -53,6 +53,7 @@ const config: Config = {
         },
       },
       screens: {
+        'md': {'raw': '(min-width: 840px)'},
         'hsm': { 'raw': '(min-height: 620px) and (min-width: 768px)' },
         'hmd': { 'raw': '(min-height: 880px)' },
         'hxl': { 'raw': '(min-height: 1050px)' },
